@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project — YourName</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/comic.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .detail-wrap { max-width: 960px; margin: 0 auto; padding: 40px 32px 80px; }
+    .detail-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .detail-panel { padding: 28px 32px; }
+    .detail-issue { font-size: 12px; letter-spacing: 3px; color: #888; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+    .detail-title { font-family: var(--font-bang); font-size: 52px; line-height: 1; margin-bottom: 12px; }
+    .detail-impact {
+      border: var(--ink-3);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      background: var(--yellow);
+      box-shadow: var(--shadow-sm);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .detail-impact-label { font-family: var(--font-bang); font-size: 13px; letter-spacing: 1px; margin-bottom: 4px; }
+    .detail-desc { font-size: 15px; font-weight: 700; color: #333; line-height: 1.7; }
+    .detail-sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .detail-meta-card {
+      background: white;
+      border: var(--ink-3);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .detail-meta-head { background: var(--ink); color: var(--yellow); font-family: var(--font-bang); font-size: 18px; padding: 10px 14px; letter-spacing: 1px; }
+    .detail-meta-body { padding: 12px 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .detail-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    @media (max-width: 700px) {
+      .detail-hero { grid-template-columns: 1fr; }
+      .detail-title { font-size: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">SSR<span class="logo-dot">.dev</span></a>
+      <button class="nav-toggle" aria-label="Open menu" id="navToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="projectContent" class="halftone-bg"></div>
+
+   <footer class="footer">
+    <div class="footer-inner">
+      <span class="bangers footer-logo">Saranya.dev</span>
+      <span class="footer-status">© 2026 — Open to SWE · AI Eng · Data Eng roles</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/saranya17/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/saranyasounder" target="_blank">GitHub</a>
+        <a href="mailto:saranya.official@yahoo.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const project = PROJECTS.find(p => p.id === id);
+    const container = document.getElementById('projectContent');
+
+    if (!project) {
+      container.innerHTML = `<div style="padding:80px;text-align:center;"><h2 style="font-family:var(--font-bang);font-size:40px;">Project not found</h2><a href="projects.html" class="btn btn-red" style="margin-top:20px;display:inline-block;">Back to Projects</a></div>`;
+    } else {
+      document.title = `${project.title} — YourName`;
+      const tags = project.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
+      container.innerHTML = `
+        <div class="detail-wrap">
+          <a href="projects.html" style="font-weight:700;font-size:13px;color:#888;display:inline-block;margin-bottom:24px;">&larr; Back to Projects</a>
+          <div class="detail-hero">
+            <div class="panel detail-panel action-lines">
+              <div class="detail-issue">Issue ${project.issue} &nbsp;·&nbsp; ${project.year}</div>
+              <div class="detail-title">${project.title}</div>
+              <p class="detail-desc">${project.description}</p>
+              <div class="detail-links" style="margin-top:20px;">
+                <a href="${project.github}" target="_blank" class="btn btn-outline">GitHub &rarr;</a>
+                ${project.demo ? `<a href="${project.demo}" target="_blank" class="btn btn-blue">Live Demo &rarr;</a>` : ''}
+                <a href="blog-post.html?slug=${project.blogSlug}" class="btn btn-red">Read Dev Diary &rarr;</a>
+              </div>
+            </div>
+            <div class="detail-sidebar">
+              <div class="detail-impact">
+                <div class="detail-impact-label">Impact</div>
+                ${project.impact}
+              </div>
+              <div class="detail-meta-card">
+                <div class="detail-meta-head">Tech Stack</div>
+                <div class="detail-meta-body">${tags}</div>
+              </div>
+              <div class="detail-meta-card">
+                <div class="detail-meta-head">Category</div>
+                <div class="detail-meta-body"><span style="font-weight:700;font-size:14px;">${project.subtitle}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

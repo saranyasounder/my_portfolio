@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience — Saranya</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/comic.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .exp-wrap { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start; }
+    .sidebar-card { background: white; border: var(--ink-4); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; margin-bottom: 20px; }
+    .sidebar-head { padding: 12px 16px; border-bottom: var(--ink-3); font-family: var(--font-bang); font-size: 20px; }
+    .sidebar-body { padding: 14px 16px; }
+    .edu-item { margin-bottom: 14px; }
+    .edu-degree { font-weight: 700; font-size: 14px; }
+    .edu-school { font-size: 13px; color: #555; font-weight: 700; }
+    .edu-year { font-size: 11px; color: #888; font-weight: 700; margin-top: 2px; }
+    .edu-gpa { font-size: 11px; font-weight: 700; color: var(--mint-dark); margin-top: 2px; }
+    .cert-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .cert-icon { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--ink); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .cert-name { font-size: 13px; font-weight: 700; }
+    .cert-org  { font-size: 11px; color: #888; font-weight: 700; }
+    .timeline-item { opacity: 1 !important; transform: none !important; }
+    @media (max-width: 900px) { .exp-wrap { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .exp-wrap { padding: 24px 16px 60px; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">SSR<span class="logo-dot">.dev</span></a>
+      <button class="nav-toggle" aria-label="Open menu" id="navToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experience.html" class="active">Experience</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="page-eyebrow">The Origin Arc</div>
+      <h1 class="page-title">Exper<span>ience</span></h1>
+      <p class="page-subtitle">The roles that shaped how I think about AI, data, and building things that actually work.</p>
+    </div>
+  </header>
+
+  <div class="halftone-bg">
+    <div class="exp-wrap">
+
+      <!-- TIMELINE -->
+      <div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+
+        <div class="sidebar-card">
+          <div class="sidebar-head" style="background:var(--blue);color:white;">Education</div>
+          <div class="sidebar-body">
+            <div class="edu-item">
+              <div class="edu-degree">BS Computer Science (AI focus)</div>
+              <div class="edu-school">Oregon State University · Finance Minor</div>
+              <div class="edu-year">Expected June 2027</div>
+              <div class="edu-gpa">GPA: 3.93</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-head" style="background:var(--red);color:white;">Awards</div>
+          <div class="sidebar-body">
+            <div class="cert-item">
+              <div class="cert-icon" style="background:var(--yellow);">🏆</div>
+              <div>
+                <div class="cert-name">HackUP 2026 — Innovative Tracker Winner</div>
+                <div class="cert-org">LectureLife · April 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-head" style="background:var(--mint);">Open To</div>
+          <div class="sidebar-body">
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <span class="pow pow-red">MLE</span>
+              <span class="pow pow-blue">AI Engineer</span>
+              <span class="pow pow-yellow">Data Engineer</span>
+              <span class="pow" style="background:var(--purple);color:white;">SWE</span>
+              <span class="pow" style="background:var(--mint-dark);color:white;">AI Research</span>
+            </div>
+            <p style="font-size:12px;font-weight:700;color:#666;margin-top:14px;line-height:1.6;">Open to full-time, internship, and contract roles. Based in Fremont, CA.</p>
+            <a href="contact.html" class="btn btn-red" style="margin-top:14px;display:inline-block;font-size:17px;">Get In Touch</a>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-head" style="background:var(--ink);color:var(--yellow);">Skills</div>
+          <div class="sidebar-body" style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:5px;">AI / ML</div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;">
+                <span class="project-tag">PyTorch</span><span class="project-tag">TensorFlow</span><span class="project-tag">LLMs</span><span class="project-tag">Claude API</span><span class="project-tag">OpenRouter</span><span class="project-tag">Prompt Eng</span><span class="project-tag">Multi-Agent</span>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:5px;">Data</div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;">
+                <span class="project-tag">SQL</span><span class="project-tag">PostgreSQL</span><span class="project-tag">Pandas</span><span class="project-tag">NumPy</span>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:5px;">Languages</div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;">
+                <span class="project-tag">Python</span><span class="project-tag">JavaScript</span><span class="project-tag">C++</span><span class="project-tag">Java</span><span class="project-tag">R</span>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:5px;">Testing & Tools</div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;">
+                <span class="project-tag">Playwright</span><span class="project-tag">Vitest</span><span class="project-tag">Git</span><span class="project-tag">Firebase</span><span class="project-tag">W&B</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="bangers footer-logo">Saranya.dev</span>
+      <span class="footer-status">© 2026 — Open to SWE · AI Eng · Data Eng roles</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/saranya17/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/saranyasounder" target="_blank">GitHub</a>
+        <a href="mailto:saranya.official@yahoo.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+  <script>
+    const EXPERIENCE = [
+      {
+        role: "Teaching Assistant",
+        company: "CS340: Intro to Databases · Oregon State University",
+        date: "Dec 2025 – Present",
+        color: "var(--red)",
+        dotColor: "var(--red)",
+        dotText: "NOW",
+        bullets: [
+          "Supported 300+ students in relational database design, SQL querying, normalization, and ER modeling",
+          "Designed automated SQL validation pipelines with systematic edge-case coverage (NULLs, duplicates, missing relationships), improving grading repeatability across 300+ submissions",
+          "Designed and executed functional, edge-case, and regression test cases to ensure system reliability across database workflows",
+          "Debugged complex SQL queries and database logic by identifying failure cases, edge conditions, and data inconsistencies",
+        ],
+        tags: ["SQL", "PostgreSQL", "Test Automation", "Databases", "Education"],
+      },
+      {
+        role: "Academic Learning Assistant",
+        company: "Oregon State University · Corvallis, OR",
+        date: "Sep 2024 – Present",
+        color: "var(--mint)",
+        dotColor: "var(--mint-dark)",
+        dotText: "'24",
+        isLight: true,
+        bullets: [
+          "Serve as ALA for a 300+ student residential hall, providing one-on-one support on study strategies, time management, and course planning",
+          "Lead 2–3 academic workshops and structured study sessions each term, using student feedback to improve engagement",
+          "Collaborate with Residence Hall staff to analyse engagement patterns and design targeted outreach initiatives",
+          "Managed event logistics and resource planning for workshops, balancing participation goals with available budgets",
+        ],
+        tags: ["Mentoring", "Workshop Facilitation", "Data Analysis", "Program Management"],
+      },
+      {
+        role: "AI Research Assistant",
+        company: "Star Lab · Oregon State University",
+        date: "Nov 2023 – Dec 2024",
+        color: "var(--blue)",
+        dotColor: "var(--blue)",
+        dotText: "'23",
+        bullets: [
+          "Designed and evaluated transformer-based NLP pipelines in Python for French→English translation, processing 1,000+ sentence pairs",
+          "Built modular data preprocessing and evaluation workflows to improve experiment reproducibility and efficiency",
+          "Performed detailed error analysis and metric-driven evaluation to identify failure patterns and guide model improvements",
+          "Delivered structured reports and performance insights to research teams, enabling iterative model optimization",
+        ],
+        tags: ["PyTorch", "NLP", "Transformers", "Python", "Research", "Evaluation"],
+      },
+    ];
+
+    const timeline = document.getElementById('timeline');
+    timeline.innerHTML = EXPERIENCE.map(exp => {
+      const tags = exp.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
+      const bullets = exp.bullets.map(b => `<li>${b}</li>`).join('');
+      const isLight = exp.isLight || exp.color === 'var(--yellow)';
+      const textColor = isLight ? '#111' : 'white';
+      const subColor  = isLight ? '#444' : 'rgba(255,255,255,0.9)';
+      const dateColor = isLight ? '#555' : 'rgba(255,255,255,0.85)';
+      return `
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:${exp.dotColor};color:${textColor};">${exp.dotText}</div>
+          <div class="timeline-content">
+            <div class="timeline-header" style="background:${exp.color};color:${textColor};">
+              <div class="timeline-role" style="color:${textColor};">${exp.role}</div>
+              <div class="timeline-company" style="color:${subColor};">${exp.company}</div>
+              <div class="timeline-date" style="color:${dateColor};">${exp.date}</div>
+            </div>
+            <div class="timeline-body"><ul>${bullets}</ul></div>
+            <div class="timeline-tech">${tags}</div>
+          </div>
+        </div>`;
+    }).join('');
+  </script>
+</body>
+</html>

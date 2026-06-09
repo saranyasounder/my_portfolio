@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dev Diaries — Saranya</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/comic.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .blog-page-wrap { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .blog-intro {
+      border: var(--ink-4);
+      border-radius: var(--radius);
+      background: var(--yellow);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 40px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .blog-intro-icon { font-size: 48px; flex-shrink: 0; }
+    .blog-intro-title { font-family: var(--font-bang); font-size: 32px; line-height: 1; margin-bottom: 6px; }
+    .blog-intro-desc { font-size: 14px; font-weight: 700; color: #555; line-height: 1.6; }
+    .blog-card {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    @media (max-width: 600px) {
+      .blog-page-wrap { padding: 24px 16px 60px; }
+      .blog-intro { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">SSR<span class="logo-dot">.dev</span></a>
+      <button class="nav-toggle" aria-label="Open menu" id="navToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="page-eyebrow">The Chronicles</div>
+      <h1 class="page-title">Dev <span>Diaries</span></h1>
+      <p class="page-subtitle">Real stories from the trenches — the bugs, the breakthroughs, and everything I would tell my past self.</p>
+    </div>
+  </header>
+
+  <div class="halftone-bg">
+    <div class="blog-page-wrap">
+      <div class="blog-intro">
+        <div class="blog-intro-icon">📖</div>
+        <div>
+          <div class="blog-intro-title">What are Dev Diaries?</div>
+          <p class="blog-intro-desc">Every project in my portfolio has a companion blog post. Not a tutorial — a war story. The things that went wrong, how I debugged them, and what I actually mastered from building it.</p>
+        </div>
+      </div>
+      <div class="blog-grid" id="blogGrid"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="bangers footer-logo">Saranya.dev</span>
+      <span class="footer-status">© 2026 — Open to SWE · AI Eng · Data Eng roles</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/saranya17/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/saranyasounder" target="_blank">GitHub</a>
+        <a href="mailto:saranya.official@yahoo.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/posts/veritas.js"></script>
+  <script src="../js/posts/lecturelife.js"></script>
+  <script src="../js/posts/floodaid.js"></script>
+  <script src="../js/data.js"></script>
+  <script>
+    const BLOG_POSTS = [VERITAS_POST, LECTURELIFE_POST, FLOODAID_POST];
+
+    (function() {
+      const grid = document.getElementById('blogGrid');
+      if (!grid) return;
+
+      grid.innerHTML = BLOG_POSTS.map(function(post) {
+        const tags = post.tags.map(t => `<span class="blog-tag">${t}</span>`).join('');
+        return `
+          <article class="blog-card" onclick="window.location='blog-post.html?slug=${post.slug}'" style="cursor:pointer;">
+            <div class="blog-card-header">
+              <div class="blog-card-meta">
+                <span class="blog-date">${post.date}</span>
+                <a class="blog-project-link" href="project-detail.html?id=${post.projectId}" onclick="event.stopPropagation()">${post.projectTitle}</a>
+              </div>
+              <div class="blog-title">${post.title}</div>
+            </div>
+            <div class="blog-card-body">
+              <p class="blog-excerpt">${post.excerpt}</p>
+              <div class="blog-tags">${tags}</div>
+            </div>
+            <div class="blog-card-footer">
+              <span class="read-time">${post.readTime}</span>
+              <span class="pow pow-red">Read &rarr;</span>
+            </div>
+          </article>`;
+      }).join('');
+    })();
+  </script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

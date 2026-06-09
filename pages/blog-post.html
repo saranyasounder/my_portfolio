@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dev Diary — Saranya</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/comic.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">SSR<span class="logo-dot">.dev</span></a>
+      <button class="nav-toggle" aria-label="Open menu" id="navToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="postContent" class="halftone-bg" style="min-height:60vh;"></div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="bangers footer-logo">Saranya.dev</span>
+      <span class="footer-status">© 2026 — Open to SWE · AI Eng · Data Eng roles</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/saranya17/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/saranyasounder" target="_blank">GitHub</a>
+        <a href="mailto:saranya.official@yahoo.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/posts/veritas.js"></script>
+  <script src="../js/posts/lecturelife.js"></script>
+  <script src="../js/posts/floodaid.js"></script>
+  <script src="../js/nav.js"></script>
+  <script>
+    const BLOG_POSTS = [VERITAS_POST, LECTURELIFE_POST, FLOODAID_POST];
+
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug');
+    const post = BLOG_POSTS.find(p => p.slug === slug);
+    const container = document.getElementById('postContent');
+
+    if (!post) {
+      container.innerHTML = `<div style="padding:80px;text-align:center;"><h2 style="font-family:var(--font-bang);font-size:40px;">Post not found</h2><a href="blog.html" class="btn btn-red" style="margin-top:20px;display:inline-block;">Back to Blog</a></div>`;
+    } else {
+      document.title = `${post.title} — Saranya`;
+
+      function renderSection(s) {
+        if (s.type === 'h2') return `<h2>${s.content}</h2>`;
+        if (s.type === 'h3') return `<h3>${s.content}</h3>`;
+        if (s.type === 'p')  return `<p>${s.content}</p>`;
+        if (s.type === 'code') return `<pre><code>${s.content.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</code></pre>`;
+        if (s.type === 'callout') return `
+          <div class="blog-callout ${s.variant}">
+            <div class="blog-callout-label">${s.label}</div>
+            <div>${s.content}</div>
+          </div>`;
+        return '';
+      }
+
+      const tags = post.tags.map(t => `<span class="blog-tag">${t}</span>`).join('');
+
+      container.innerHTML = `
+        <div class="blog-post-wrap">
+          <a href="blog.html" style="font-weight:700;font-size:13px;color:#888;display:inline-block;margin-bottom:24px;">&larr; Back to Dev Diaries</a>
+
+          <div class="blog-post-hero">
+            <div class="blog-post-meta">
+              <span class="pow pow-yellow">${post.date}</span>
+              <span class="pow pow-red">${post.readTime}</span>
+              <a href="project-detail.html?id=${post.projectId}" class="pow pow-blue">${post.projectTitle} &rarr;</a>
+            </div>
+            <h1 class="blog-post-title">${post.title}</h1>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;">${tags}</div>
+          </div>
+
+          <div class="panel" style="padding:20px 24px;margin-bottom:32px;background:var(--yellow);">
+            <div style="font-family:var(--font-bang);font-size:16px;letter-spacing:1px;margin-bottom:6px;">TL;DR</div>
+            <p style="font-size:14px;font-weight:700;color:#333;line-height:1.6;">${post.excerpt}</p>
+          </div>
+
+          <div class="blog-post-body">
+            ${post.sections.map(renderSection).join('')}
+          </div>
+
+          <div style="border-top:var(--ink-3);margin-top:48px;padding-top:32px;">
+            <div style="font-family:var(--font-bang);font-size:28px;margin-bottom:16px;">More Dev Diaries</div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              ${BLOG_POSTS.filter(p => p.slug !== slug).slice(0,3).map(p => `
+                <a href="blog-post.html?slug=${p.slug}" class="panel" style="padding:14px 18px;flex:1;min-width:200px;text-decoration:none;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='7px 7px 0 #111'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                  <div style="font-size:11px;font-weight:700;color:#888;margin-bottom:4px;">${p.date} · ${p.readTime}</div>
+                  <div style="font-family:var(--font-bang);font-size:18px;line-height:1.2;">${p.title}</div>
+                </a>`).join('')}
+            </div>
+          </div>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

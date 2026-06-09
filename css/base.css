@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+  --ink:        #111111;
+  --paper:      #FFF9F0;
+  --panel-bg:   #FFFFFF;
+  --red:        #FF3B3B;
+  --blue:       #2D6BE4;
+  --yellow:     #FFE84D;
+  --mint:       #C8F5E0;
+  --lavender:   #E8DCFF;
+  --mint-dark:  #1db86e;
+  --purple:     #8B5CF6;
+  --ink-3:      3px solid #111;
+  --ink-4:      4px solid #111;
+  --ink-5:      5px solid #111;
+  --shadow-sm:  3px 3px 0 #111;
+  --shadow-md:  5px 5px 0 #111;
+  --shadow-lg:  7px 7px 0 #111;
+  --radius:     6px;
+  --font-comic: 'Comic Neue', cursive;
+  --font-bang:  'Bangers', cursive;
+}
+
+/* ── RESET ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-comic);
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
+
+/* ── TYPOGRAPHY ──────────────────────────────────────── */
+.bangers { font-family: var(--font-bang); letter-spacing: 1px; }
+
+h1, h2, h3 { font-family: var(--font-bang); letter-spacing: 1px; }
+
+/* ── BUTTONS ─────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  font-family: var(--font-bang);
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 10px 26px;
+  border: var(--ink-3);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform .1s, box-shadow .1s;
+}
+.btn:hover { transform: translate(2px,2px); box-shadow: 1px 1px 0 #111; }
+.btn:active { transform: translate(3px,3px); box-shadow: none; }
+
+.btn-red     { background: var(--red);  color: white; }
+.btn-blue    { background: var(--blue); color: white; }
+.btn-yellow  { background: var(--yellow); color: var(--ink); }
+.btn-outline { background: white; color: var(--ink); }
+
+/* ── PANELS ──────────────────────────────────────────── */
+.panel {
+  background: var(--panel-bg);
+  border: var(--ink-4);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.panel-yellow   { background: var(--yellow); }
+.panel-red      { background: var(--red); }
+.panel-blue     { background: var(--blue); }
+.panel-mint     { background: var(--mint); }
+.panel-lavender { background: var(--lavender); }
+
+/* ── BACKGROUNDS ─────────────────────────────────────── */
+.halftone-bg {
+  background-color: var(--paper);
+  background-image: radial-gradient(circle, #00000014 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.action-lines {
+  background-image: repeating-linear-gradient(
+    45deg, transparent, transparent 7px,
+    rgba(255,232,77,.25) 7px, rgba(255,232,77,.25) 8px
+  );
+}
+
+/* ── SPEECH / THOUGHT BUBBLES ────────────────────────── */
+.speech-bubble {
+  position: relative;
+  background: white;
+  border: var(--ink-3);
+  border-radius: 18px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
+}
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px; left: 24px;
+  border: 10px solid transparent;
+  border-top: 15px solid var(--ink);
+}
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -10px; left: 26px;
+  border: 8px solid transparent;
+  border-top: 13px solid white;
+  z-index: 1;
+}
+.thought-bubble {
+  display: inline-block;
+  background: white;
+  border: var(--ink-3);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── POW BADGES ──────────────────────────────────────── */
+.pow {
+  display: inline-block;
+  font-family: var(--font-bang);
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 3px 12px;
+  border: var(--ink-3);
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform .1s, box-shadow .1s;
+}
+.pow:hover { transform: translate(1px,1px); box-shadow: 1px 1px 0 #111; }
+.pow-red    { background: var(--red);    color: white; }
+.pow-blue   { background: var(--blue);   color: white; }
+.pow-yellow { background: var(--yellow); color: var(--ink); }
+.pow-dark   { background: var(--ink);    color: var(--yellow); }
+
+/* ── ZAP / CHAPTER LABEL ─────────────────────────────── */
+.zap {
+  font-family: var(--font-bang);
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  padding: 6px 20px;
+  background: var(--red);
+  color: white;
+  border: var(--ink-3);
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+/* ── CHAPTER DIVIDER ─────────────────────────────────── */
+.chapter-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 40px;
+  background: var(--paper);
+}
+.divider-line { flex: 1; height: 4px; background: var(--ink); }
+
+/* ── PROJECT TAGS ────────────────────────────────────── */
+.project-tag {
+  display: inline-block;
+  background: var(--ink);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin: 2px 2px 2px 0;
+  letter-spacing: .5px;
+}
+
+/* ── ISSUE LABEL ─────────────────────────────────────── */
+.issue-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* ── SOCIAL CHIPS ────────────────────────────────────── */
+.social-chip {
+  display: inline-block;
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 #111;
+  transition: transform .1s, box-shadow .1s;
+}
+.social-chip:hover { transform: translate(1px,1px); box-shadow: 1px 1px 0 #111; }
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.footer {
+  background: var(--ink);
+  border-top: 4px solid var(--yellow);
+  padding: 18px 40px;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-logo { font-size: 22px; color: var(--yellow); letter-spacing: 2px; }
+.footer-status { font-size: 12px; font-weight: 700; color: #666; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; font-weight: 700; color: var(--yellow); }
+.footer-links a:hover { color: white; }
+
+/* ── SCROLL REVEAL ───────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── PAGE HEADER (inner pages) ───────────────────────── */
+.page-header {
+  background: var(--ink);
+  padding: 60px 40px 40px;
+  border-bottom: 5px solid var(--yellow);
+}
+.page-header-inner { max-width: 1100px; margin: 0 auto; }
+.page-eyebrow { font-size: 12px; letter-spacing: 3px; color: #888; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+.page-title { font-family: var(--font-bang); font-size: 64px; color: white; line-height: 1; }
+.page-title span { color: var(--yellow); }
+.page-subtitle { font-size: 15px; color: #aaa; font-weight: 700; margin-top: 12px; max-width: 600px; line-height: 1.6; }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .chapter-divider { padding: 20px 16px; }
+  .footer { padding: 16px 20px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .page-title { font-size: 42px; }
+}

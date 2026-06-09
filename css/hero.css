@@ -1,0 +1,181 @@
+/* ── HERO ────────────────────────────────────────────── */
+.hero {
+  padding: 40px 40px 0;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+  align-items: start;
+}
+
+/* LEFT panel */
+.hero-intro {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 380px;
+}
+.hero-name {
+  font-size: 72px;
+  line-height: 1;
+  color: var(--ink);
+  margin: 8px 0;
+}
+.name-accent { color: var(--blue); }
+.hero-roles {
+  font-size: 14px;
+  font-weight: 700;
+  color: #555;
+  letter-spacing: 1px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.hero-socials {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* RIGHT column */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hero-stats {
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.avatar-circle {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  border: var(--ink-4);
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-bang);
+  font-size: 30px;
+  color: white;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.stats-body { flex: 1; }
+.stats-title { font-size: 22px; margin-bottom: 10px; }
+
+/* skill bars */
+.skill-row { margin-bottom: 8px; }
+.skill-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.skill-track {
+  background: #eee;
+  border: 2px solid var(--ink);
+  height: 14px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%;
+  width: 0;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+  border-right: 2px solid var(--ink);
+}
+.skill-fill.blue   { background: var(--blue); }
+.skill-fill.red    { background: var(--red); }
+.skill-fill.yellow { background: var(--yellow); }
+.skill-fill.mint   { background: var(--mint-dark); }
+.skill-fill.purple { background: var(--purple); }
+
+/* status + quick stats */
+.hero-status {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.status-bolt { font-size: 28px; flex-shrink: 0; }
+.status-label { font-size: 15px; }
+.status-text { font-size: 13px; font-weight: 700; color: #333; margin-top: 2px; }
+
+.hero-quick-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.quick-stat {
+  padding: 14px 10px;
+  text-align: center;
+}
+.qs-num  { font-size: 32px; line-height: 1; }
+.qs-label { font-size: 11px; font-weight: 700; color: #666; margin-top: 2px; }
+
+/* ── PROJECT STRIP (homepage preview) ────────────────── */
+.project-strip {
+  padding: 0 40px 48px;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── BLOG TEASER ─────────────────────────────────────── */
+.blog-teaser {
+  padding: 0 40px 48px;
+}
+.blog-teaser-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.blog-teaser-text { flex: 1; }
+.blog-teaser-title { font-size: 40px; margin-bottom: 8px; }
+.blog-teaser-desc { font-size: 14px; font-weight: 700; color: #555; line-height: 1.6; margin-bottom: 16px; max-width: 560px; }
+.thought-bubbles { display: flex; flex-wrap: wrap; gap: 8px; }
+.blog-teaser-cta { text-align: center; flex-shrink: 0; }
+.blog-icon { font-size: 56px; margin-bottom: 12px; }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero { padding: 24px 20px 0; }
+  .hero-name { font-size: 54px; }
+}
+@media (max-width: 600px) {
+  .hero-stats { flex-direction: column; }
+  .hero-quick-stats { grid-template-columns: repeat(3, 1fr); }
+  .project-strip, .blog-teaser { padding: 0 16px 32px; }
+  .blog-teaser-inner { flex-direction: column; }
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Saranya Sounder Rajan</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/comic.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    .about-wrap { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; }
+    .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 48px; }
+    .about-bio { padding: 28px 32px; }
+    .about-bio-title { font-family: var(--font-bang); font-size: 36px; margin-bottom: 14px; }
+    .about-bio p { font-size: 15px; font-weight: 700; color: #333; line-height: 1.8; margin-bottom: 14px; }
+    .about-portrait {
+      background: var(--blue);
+      border: var(--ink-4);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      font-family: var(--font-bang);
+      position: relative;
+      overflow: hidden;
+    }
+    .portrait-initials {
+      position: absolute;
+      font-size: 100px;
+      color: white;
+      opacity: .9;
+      letter-spacing: 4px;
+    }
+    .portrait-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: var(--ink);
+      color: var(--yellow);
+      font-family: var(--font-bang);
+      font-size: 18px;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border-top: var(--ink-3);
+    }
+    .skills-section-title { font-family: var(--font-bang); font-size: 40px; margin-bottom: 24px; }
+    .skills-section { margin-bottom: 48px; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-bottom: 48px; }
+    .value-card { padding: 20px; }
+    .value-icon { font-size: 32px; margin-bottom: 10px; }
+    .value-title { font-family: var(--font-bang); font-size: 22px; margin-bottom: 6px; }
+    .value-desc { font-size: 13px; font-weight: 700; color: #444; line-height: 1.6; }
+
+    /* Force all dynamic content visible */
+    .about-bio, .about-portrait, .value-card, .skill-category {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    @media (max-width: 800px) {
+      .about-intro { grid-template-columns: 1fr; }
+      .about-wrap { padding: 24px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">SSR<span class="logo-dot">.dev</span></a>
+      <button class="nav-toggle" aria-label="Open menu" id="navToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="page-eyebrow">The Hero's Profile</div>
+      <h1 class="page-title">A<span>bout</span></h1>
+      <p class="page-subtitle">CS undergrad turned AI builder. I train models, ship products, and learn best when something breaks at 2am.</p>
+    </div>
+  </header>
+
+  <div class="halftone-bg">
+    <div class="about-wrap">
+
+      <div class="about-intro">
+        <div class="panel about-bio action-lines">
+          <div class="about-bio-title">Hey, I'm Saranya 👋</div>
+          <p>I'm a third year Computer Science student at Oregon State University with a focus in AI and a minor in Finance. I started in NLP research, spending over a year building and evaluating transformer based translation pipelines at Star Lab, and realized I wanted to build things that actually ship — not just things that score well on a benchmark.</p>
+          <p>So I started building. An LLM evaluation platform. A real time lecture tool that won a hackathon. A finance dashboard. Each project taught me something the classroom didn't — that the hard part isn't the model, it's everything around it.</p>
+          <p>Outside of code I work as an Academic Learning Assistant helping students navigate college, lead fundraising for the AI club on campus, and TA a databases course. I find it genuinely interesting that a few well chosen evaluation metrics can tell you more about a model than weeks of reading papers.</p>
+          <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-red">Let's Talk</a>
+            <a href="experience.html" class="btn btn-outline">My Experience</a>
+          </div>
+        </div>
+        <div class="about-portrait" style="background:var(--ink);padding:0;">
+          <img src="../assets/profile_pic.jpeg" alt="Saranya Sounder Rajan" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;min-height:280px;" />
+          <div class="portrait-label">Saranya Sounder Rajan — SWE / AI / Data</div>
+        </div>
+      </div>
+
+      <!-- VALUES -->
+      <div class="skills-section">
+        <div class="skills-section-title">What I stand for</div>
+        <div class="values-grid">
+          <div class="panel value-card" style="background:var(--yellow);">
+
+            <div class="value-title">Production First</div>
+            <p class="value-desc">Accuracy on a benchmark means nothing if the model can't serve requests. I engineer for the real world.</p>
+          </div>
+          <div class="panel value-card" style="background:var(--mint);">
+
+            <div class="value-title">Radical Honesty</div>
+            <p class="value-desc">I write about what went wrong, not just what worked. The struggle is where the learning is.</p>
+          </div>
+          <div class="panel value-card" style="background:var(--lavender);">
+
+            <div class="value-title">Move Fast, Test Faster</div>
+            <p class="value-desc">Ship early, instrument everything, evaluate constantly. An untested model is a guess.</p>
+          </div>
+          <div class="panel value-card panel-red">
+
+            <div class="value-title" style="color:white;">Platform Mindset</div>
+            <p class="value-desc" style="color:#ffcccc;">I build things other engineers want to use — clean APIs, great docs, tools that get adopted.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS GRID -->
+      <div class="skills-section">
+        <div class="skills-section-title">Tech Arsenal</div>
+        <div class="skills-grid" id="skillsGrid"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="bangers footer-logo">Saranya.dev</span>
+      <span class="footer-status">© 2026 — Open to SWE · AI Eng · Data Eng roles</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/saranya17/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/saranyasounder" target="_blank">GitHub</a>
+        <a href="mailto:saranya.official@yahoo.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+  <script>
+    const SKILLS = [
+      { cat: "ML / AI",       color: "var(--blue)",     items: ["PyTorch", "TensorFlow", "scikit-learn", "HuggingFace", "OpenAI API", "LLMs", "NLP", "Agentic Workflows"] },
+      { cat: "Full Stack",    color: "var(--red)",      items: ["React", "Node.js", "FastAPI", "Express", "Socket.io"] },
+      { cat: "Cloud & Infra", color: "var(--yellow)",   items: ["Docker", "GitHub Actions", "Vercel", "Render"] },
+      { cat: "Languages",     color: "var(--mint)",     items: ["Python", "JavaScript", "Java", "C++", "C", "R", "Kotlin"] },
+      { cat: "Data",          color: "var(--lavender)", items: ["Weights & Biases", "Pandas", "NumPy", "SQL", "PostgreSQL"] },
+      { cat: "Testing",       color: "#f0e0c8",         items: ["Playwright", "Vitest", "Unit Testing", "Integration Testing"] },
+    ];
+
+    document.getElementById('skillsGrid').innerHTML = SKILLS.map(s => {
+      const tags = s.items.map(i => `<span class="project-tag">${i}</span>`).join('');
+      return `
+        <div class="skill-category">
+          <div class="skill-cat-header" style="background:${s.color}">${s.cat}</div>
+          <div class="skill-cat-body">${tags}</div>
+        </div>`;
+    }).join('');
+  </script>
+</body>
+</html>
