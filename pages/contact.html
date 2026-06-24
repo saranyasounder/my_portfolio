@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Saranya Sounder Rajan</title>
+  <title>Contact — Saranya</title>
   <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/nav.css" />
   <link rel="stylesheet" href="../css/comic.css" />
@@ -24,6 +24,32 @@
     .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint-dark); border: 2px solid var(--ink); }
     @media (max-width: 800px) { .contact-wrap { grid-template-columns: 1fr; } }
     @media (max-width: 600px) { .contact-wrap { padding: 24px 16px 60px; } .contact-panel { padding: 20px; } }
+
+    /* Fix: override reveal opacity so form is always visible */
+    .reveal { opacity: 1 !important; transform: none !important; }
+
+    /* Form row styles */
+    .form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-row label { font-size: 13px; font-weight: 700; color: var(--ink); }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      font-family: var(--font-comic);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 12px;
+      border: 3px solid var(--ink);
+      border-radius: var(--radius);
+      background: var(--paper);
+      color: var(--ink);
+      outline: none;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow .15s;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus { box-shadow: 4px 4px 0 var(--blue); }
+    .form-row textarea { min-height: 120px; resize: vertical; }
   </style>
 </head>
 <body>
