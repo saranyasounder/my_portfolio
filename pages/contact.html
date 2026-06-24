@@ -70,7 +70,7 @@
 
   <header class="page-header">
     <div class="page-header-inner">
-      <div class="page-eyebrow">The Bat-Signal</div>
+      <div class="page-eyebrow">Hello!</div>
       <h1 class="page-title">Get In <span>Touch</span></h1>
       <p class="page-subtitle">Open to MLE, AI Engineer, and Data Engineer roles. Hybrid, remote, or on-site. Let's talk.</p>
     </div>
@@ -189,7 +189,19 @@
   <script>
     function handleSubmit(e) {
       e.preventDefault();
-      // Replace with your form service (Formspree, Netlify Forms, etc.)
+      const name    = document.getElementById('name').value;
+      const company = document.getElementById('company').value;
+      const email   = document.getElementById('email').value;
+      const role    = document.getElementById('role').value;
+      const message = document.getElementById('message').value;
+
+      const subject = encodeURIComponent(`[SSR.dev] ${role} Inquiry from ${name}`);
+      const body    = encodeURIComponent(
+        `Name: ${name}\nCompany: ${company || 'N/A'}\nEmail: ${email}\nRole: ${role}\n\n${message}`
+      );
+
+      window.location.href = `mailto:saranya.official@yahoo.com?subject=${subject}&body=${body}`;
+
       document.getElementById('successMsg').style.display = 'block';
       document.getElementById('contactForm').reset();
     }
