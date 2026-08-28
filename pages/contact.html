@@ -9,11 +9,7 @@
   <link rel="stylesheet" href="../css/comic.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    .contact-wrap { max-width: 1000px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
-    .contact-panel { padding: 32px 36px; }
-    .contact-title { font-family: var(--font-bang); font-size: 36px; margin-bottom: 8px; }
-    .contact-subtitle { font-size: 14px; font-weight: 700; color: #555; margin-bottom: 28px; line-height: 1.6; }
-    .success-msg { display: none; background: var(--mint); border: var(--ink-3); border-radius: var(--radius); padding: 16px 20px; font-weight: 700; font-size: 14px; box-shadow: var(--shadow-sm); margin-top: 12px; }
+    .contact-wrap { max-width: 700px; margin: 0 auto; padding: 40px 32px 80px; display: grid; gap: 16px; }
     .contact-info-card { background: white; border: var(--ink-4); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; margin-bottom: 16px; }
     .contact-info-head { padding: 12px 16px; border-bottom: var(--ink-3); font-family: var(--font-bang); font-size: 20px; }
     .contact-info-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
@@ -22,34 +18,69 @@
     .contact-link-icon { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--ink); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
     .avail-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--mint); border: var(--ink-3); border-radius: 20px; padding: 6px 16px; font-size: 13px; font-weight: 700; box-shadow: var(--shadow-sm); }
     .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint-dark); border: 2px solid var(--ink); }
-    @media (max-width: 800px) { .contact-wrap { grid-template-columns: 1fr; } }
-    @media (max-width: 600px) { .contact-wrap { padding: 24px 16px 60px; } .contact-panel { padding: 20px; } }
+    @media (max-width: 600px) { .contact-wrap { padding: 24px 16px 60px; } }
 
-    /* Fix: override reveal opacity so form is always visible */
+    /* Fix: override reveal opacity so content is always visible */
     .reveal { opacity: 1 !important; transform: none !important; }
 
-    /* Form row styles */
-    .form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-    .form-row label { font-size: 13px; font-weight: 700; color: var(--ink); }
-    .form-row input,
-    .form-row select,
-    .form-row textarea {
-      font-family: var(--font-comic);
-      font-size: 14px;
-      font-weight: 700;
-      padding: 10px 12px;
-      border: 3px solid var(--ink);
-      border-radius: var(--radius);
-      background: var(--paper);
+    /* "What I'm Looking For" card */
+    .looking-for-card { border: 3px solid var(--ink); }
+    .lf-hook {
+      font-family: var(--font-bang);
+      font-size: 19px;
+      line-height: 1.35;
+      letter-spacing: 0.3px;
       color: var(--ink);
-      outline: none;
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow .15s;
+      margin: 0 0 18px 0;
+      padding-bottom: 14px;
+      border-bottom: 3px dashed var(--ink);
     }
-    .form-row input:focus,
-    .form-row select:focus,
-    .form-row textarea:focus { box-shadow: 4px 4px 0 var(--blue); }
-    .form-row textarea { min-height: 120px; resize: vertical; }
+    .lf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .lf-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .lf-icon {
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+      border-radius: 50%;
+      border: 2px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+    .lf-item-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .lf-item-sub {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #666;
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+    .lf-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 3px dashed var(--ink);
+    }
+    @media (max-width: 480px) {
+      .lf-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -79,95 +110,82 @@
   <div class="halftone-bg">
     <div class="contact-wrap">
 
-      <!-- FORM -->
-      <div class="panel contact-panel action-lines reveal">
-        <div class="contact-title">Send a message</div>
-        <p class="contact-subtitle">Whether it's a job opportunity, a project question, or you just want to talk data — my inbox is open.</p>
-
-        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-            <div class="form-row">
-              <label for="name">Your name</label>
-              <input type="text" id="name" placeholder="Jane Smith" required />
-            </div>
-            <div class="form-row">
-              <label for="company">Company / org</label>
-              <input type="text" id="company" placeholder="ACME Corp (optional)" />
-            </div>
-          </div>
-          <div class="form-row">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="jane@company.com" required />
-          </div>
-          <div class="form-row">
-            <label for="role">What kind of role?</label>
-            <select id="role">
-              <option>ML Engineer</option>
-              <option>AI Engineer</option>
-              <option>Data Engineer</option>
-              <option>MLOps Engineer</option>
-              <option>Freelance / Contract</option>
-              <option>Other / Just saying hi</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Tell me about the role, the stack, the team..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-red" style="width:100%;font-size:22px;">Send It &rarr;</button>
-          <div class="success-msg" id="successMsg">
-            Message sent! I'll get back to you within 24 hours.
-          </div>
-        </form>
+      <div style="margin-bottom:4px;">
+        <div class="avail-badge">
+          <div class="avail-dot"></div>
+          Available for new roles
+        </div>
       </div>
 
-      <!-- SIDEBAR -->
-      <aside>
-        <div style="margin-bottom:16px;">
-          <div class="avail-badge">
-            <div class="avail-dot"></div>
-            Available for new roles
-          </div>
+      <div class="contact-info-card">
+        <div class="contact-info-head" style="background:var(--blue);color:white;">Find Me Online</div>
+        <div class="contact-info-body">
+          <a href="https://www.linkedin.com/in/saranya17/" target="_blank" class="contact-link">
+            <div class="contact-link-icon" style="background:var(--blue);color:white;">in</div>
+            linkedin.com/in/saranya17
+          </a>
+          <a href="https://github.com/saranyasounder" target="_blank" class="contact-link">
+            <div class="contact-link-icon" style="background:var(--ink);color:white;">GH</div>
+            github.com/saranyasounder
+          </a>
+          <a href="mailto:saranya.official@yahoo.com" class="contact-link">
+            <div class="contact-link-icon" style="background:var(--red);color:white;">@</div>
+            saranya.official@yahoo.com
+          </a>
         </div>
+      </div>
 
-        <div class="contact-info-card">
-          <div class="contact-info-head" style="background:var(--blue);color:white;">Find Me Online</div>
-          <div class="contact-info-body">
-            <a href="https://www.linkedin.com/in/saranya17/" target="_blank" class="contact-link">
-              <div class="contact-link-icon" style="background:var(--blue);color:white;">in</div>
-              linkedin.com/in/saranya17
-            </a>
-            <a href="https://github.com/saranyasounder" target="_blank" class="contact-link">
-              <div class="contact-link-icon" style="background:var(--ink);color:white;">GH</div>
-              github.com/saranyasounder
-            </a>
-            <a href="mailto:saranya.official@yahoo.com" class="contact-link">
-              <div class="contact-link-icon" style="background:var(--red);color:white;">@</div>
-              saranya.official@yahoo.com
-            </a>
-          </div>
-        </div>
+      <div class="contact-info-card looking-for-card">
+        <div class="contact-info-head" style="background:var(--yellow);">What I'm Looking For</div>
+        <div class="contact-info-body" style="padding:20px 18px;">
+          <p class="lf-hook">I build things people actually rely on — not demos that die in a notebook.</p>
 
-        <div class="contact-info-card">
-          <div class="contact-info-head" style="background:var(--yellow);">What I'm Looking For</div>
-          <div class="contact-info-body" style="font-size:13px;font-weight:700;color:#333;line-height:1.7;gap:0;">
-            <p>Roles where I can build at the intersection of data and ML — not just notebooks, not just pipelines, but the full stack.</p>
-            <p style="margin-top:8px;">Strong preference for teams that ship to production, value documentation, and care about reliability.</p>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;">
-              <span class="pow pow-red">Remote OK</span>
-              <span class="pow pow-blue">Hybrid OK</span>
-              <span class="pow pow-yellow">On-site OK</span>
+          <div class="lf-grid">
+            <div class="lf-item">
+              <div class="lf-icon" style="background:var(--purple);">🧠</div>
+              <div>
+                <div class="lf-item-title">ML that ships</div>
+                <div class="lf-item-sub">Models earn their keep in production, not just in a paper</div>
+              </div>
+            </div>
+            <div class="lf-item">
+              <div class="lf-icon" style="background:var(--blue);">🔧</div>
+              <div>
+                <div class="lf-item-title">Full-stack ownership</div>
+                <div class="lf-item-sub">Happy to go from data pipeline to UI and back</div>
+              </div>
+            </div>
+            <div class="lf-item">
+              <div class="lf-icon" style="background:var(--mint-dark);">🛡️</div>
+              <div>
+                <div class="lf-item-title">Privacy & trust</div>
+                <div class="lf-item-sub">I care about handling people's data responsibly</div>
+              </div>
+            </div>
+            <div class="lf-item">
+              <div class="lf-icon" style="background:var(--red);">🤝</div>
+              <div>
+                <div class="lf-item-title">Teams that document</div>
+                <div class="lf-item-sub">Good docs and code reviews aren't optional to me</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="contact-info-card">
-          <div class="contact-info-head" style="background:var(--mint);">Response Time</div>
-          <div class="contact-info-body" style="font-size:13px;font-weight:700;color:#333;">
-            I aim to reply within 24 hours on weekdays. For urgent roles, email is fastest.
+          <div class="lf-tags">
+            <span class="pow pow-red">Remote OK</span>
+            <span class="pow pow-blue">Hybrid OK</span>
+            <span class="pow pow-yellow">On-site OK</span>
+            <span class="pow" style="background:var(--purple);color:white;">Internship / New Grad</span>
           </div>
         </div>
-      </aside>
+      </div>
+
+      <div class="contact-info-card">
+        <div class="contact-info-head" style="background:var(--mint);">Response Time</div>
+        <div class="contact-info-body" style="font-size:13px;font-weight:700;color:#333;">
+          I aim to reply within 24 hours on weekdays. For urgent roles, email is fastest.
+        </div>
+      </div>
 
     </div>
   </div>
@@ -186,25 +204,5 @@
 
   <script src="../js/nav.js"></script>
   <script src="../js/animations.js"></script>
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      const name    = document.getElementById('name').value;
-      const company = document.getElementById('company').value;
-      const email   = document.getElementById('email').value;
-      const role    = document.getElementById('role').value;
-      const message = document.getElementById('message').value;
-
-      const subject = encodeURIComponent(`[SSR.dev] ${role} Inquiry from ${name}`);
-      const body    = encodeURIComponent(
-        `Name: ${name}\nCompany: ${company || 'N/A'}\nEmail: ${email}\nRole: ${role}\n\n${message}`
-      );
-
-      window.location.href = `mailto:saranya.official@yahoo.com?subject=${subject}&body=${body}`;
-
-      document.getElementById('successMsg').style.display = 'block';
-      document.getElementById('contactForm').reset();
-    }
-  </script>
 </body>
 </html>
