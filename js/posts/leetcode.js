@@ -1,7 +1,5 @@
 const LEETCODE_POST = {
   slug: "leetcode-devdiary",
-  projectId: "leetcode",
-  projectTitle: "LeetCode Grind",
   title: "The Same Bug Wore Three Different Costumes — Here's What It Taught Me About State",
   date: "August 2026",
   readTime: "6 min read",
