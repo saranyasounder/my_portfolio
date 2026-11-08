@@ -22,7 +22,7 @@ const PROJECTS = [
     description: "Real-time platform that converts static lecture slides into interactive learning experiences using a multi-agent AI pipeline. Won HackUP 2026. Built with Claude Sonnet and Haiku for knowledge graph extraction, quiz generation, and flashcard creation.",
     tags: ["React", "Node.js", "Socket.io", "Claude", "Anthropic", "ngrok", "WebSockets"],
     github: "https://github.com/Farzaanw/LectureLife",
-    demo: "",
+    demo: "../assets/videos/lecturelife_demo.mp4",
     blogSlug: "lecturelife-devdiary",
     impact: "HackUP 2026 Winner · real-time · multi-agent",
     year: "2026",
