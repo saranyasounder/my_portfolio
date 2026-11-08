@@ -41,6 +41,20 @@ const PROJECTS = [
     impact: "12s to 4s latency · real-time · cross-platform",
     year: "2026",
   },
+  {
+    id: "rootcause",
+    issue: "#004",
+    title: "RootCause",
+    subtitle: "AI Engineering · Hybrid RAG",
+    color: "yellow",
+    description: "Equipment troubleshooting assistant over a 155-page Dell PowerEdge service manual. A query router sends error codes to exact SQL lookup and open-ended questions to hybrid search (pgvector + Postgres full-text, fused with Reciprocal Rank Fusion), returning page-cited answers. A 28-question hand-labeled evaluation harness scores routing, retrieval, and answer faithfulness.",
+    tags: ["Python", "FastAPI", "PostgreSQL", "pgvector", "sentence-transformers", "Claude API"],
+    github: "https://github.com/saranyasounder/RootCause",
+    demo: "",
+    blogSlug: "rootcause-devdiary",
+    impact: "92.9% routing · hit@5 1.0 · 8/11 to 11/11 answered",
+    year: "2026",
+  },
 ];
 
 if (typeof module !== 'undefined') {
